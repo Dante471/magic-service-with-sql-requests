@@ -44,4 +44,10 @@ public class StudentController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("{age1}, {age2}")
+    public Collection<Student> getStudentsByAgeInterval(@PathVariable int age1, @PathVariable int age2) {
+        return studentService.getStudentsByAgeInterval(age1, age2);
+    }
+
+
 }
