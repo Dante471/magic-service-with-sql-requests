@@ -5,6 +5,7 @@ import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.service.FacultyService;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -23,7 +24,7 @@ public class FacultyController {
     }
 
     @GetMapping
-    public Faculty getFaculty(@RequestParam Long facultyId) {
+    public Optional<Faculty> getFaculty(@RequestParam Long facultyId) {
         return facultyService.getFacultyById(facultyId);
     }
 
@@ -40,6 +41,11 @@ public class FacultyController {
     @GetMapping("{color}")
     public Collection<Faculty> getFacultyByColor(@PathVariable String color) {
         return facultyService.getFacultyByColor(color);
+    }
+
+    @GetMapping("{name}")
+    public Collection<Faculty> getFacultyByName(@PathVariable String name) {
+        return facultyService.getFacultyByName(name);
     }
 
 }

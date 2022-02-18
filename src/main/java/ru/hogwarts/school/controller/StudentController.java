@@ -5,6 +5,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -22,8 +23,8 @@ public class StudentController {
         return studentService.addStudent(student);
     }
 
-    @GetMapping()
-    public Student getStudent(@RequestParam Long studentId) {
+    @GetMapping
+    public Optional<Student> getStudent(@RequestParam Long studentId) {
         return studentService.getStudentById(studentId);
     }
 
@@ -39,9 +40,7 @@ public class StudentController {
 
     @GetMapping("{age}")
     public Collection<Student> getStudentsByAge(@PathVariable Integer age) {
-        return studentService.getAll().stream()
-                .filter(student -> student.getAge() == age)
-                .collect(Collectors.toList());
+        return studentService.getStudentsByAge(age);
     }
 
     @GetMapping("{age1}, {age2}")

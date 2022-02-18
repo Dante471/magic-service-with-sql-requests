@@ -5,6 +5,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -18,8 +19,8 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Student getStudentById(Long studentId) {
-        return studentRepository.getById(studentId);
+    public Optional<Student> getStudentById(Long studentId) {
+        return studentRepository.findById(studentId);
     }
 
     public Student updateStudent(Student student) {
@@ -32,8 +33,8 @@ public class StudentService {
         return studentToRemove;
     }
 
-    public Collection<Student> getAll() {
-        return studentRepository.findAll();
+    public Collection<Student> getStudentsByAge(int age) {
+        return studentRepository.findStudentsByAge(age);
     }
 
     public Collection<Student> getStudentsByAgeInterval(int start, int end) {
