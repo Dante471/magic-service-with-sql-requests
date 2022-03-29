@@ -19,8 +19,8 @@ public class FacultyService {
         return facultyRepository.save(faculty);
     }
 
-    public Optional<Faculty> getFacultyById(Long facultyId) {
-        return facultyRepository.findById(facultyId);
+    public Faculty getFacultyById(Long facultyId) {
+        return facultyRepository.findById(facultyId).orElseThrow();
     }
 
     public Faculty updateFaculty(Faculty faculty) {

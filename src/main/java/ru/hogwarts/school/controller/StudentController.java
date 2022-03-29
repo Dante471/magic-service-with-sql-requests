@@ -24,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public Optional<Student> getStudent(@RequestParam Long studentId) {
+    public Student getStudent(@RequestParam Long studentId) {
         return studentService.getStudentById(studentId);
     }
 
@@ -43,8 +43,8 @@ public class StudentController {
         return studentService.getStudentsByAge(age);
     }
 
-    @GetMapping("{age1}, {age2}")
-    public Collection<Student> getStudentsByAgeInterval(@PathVariable int age1, @PathVariable int age2) {
+    @GetMapping("/age-between")
+    public Collection<Student> getStudentsByAgeInterval(@RequestParam int age1, @RequestParam int age2) {
         return studentService.getStudentsByAgeInterval(age1, age2);
     }
 
