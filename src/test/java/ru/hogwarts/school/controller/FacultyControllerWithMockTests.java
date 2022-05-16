@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,11 +27,8 @@ public class FacultyControllerWithMockTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @SpyBean
+    @MockBean
     private FacultyService facultyService;
-
-    @InjectMocks
-    private FacultyController facultyController;
 
     @Test
     public void getFacultyInfoTest() throws Exception {
@@ -41,10 +39,6 @@ public class FacultyControllerWithMockTests {
         final String color2 = "yellow";
         final long id2 = 2;
         final List<Faculty> faculties = new ArrayList<>();
-
-        JSONObject facultyObject = new JSONObject();
-        facultyObject.put("name", name1);
-        facultyObject.put("color", color1);
 
         Faculty faculty = new Faculty();
         faculty.setId(id1);
