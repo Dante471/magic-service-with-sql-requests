@@ -49,17 +49,17 @@ public class StudentController {
     }
 
     @GetMapping("/number")
-    public Integer amountOfStudents() {
+    public Integer showAmountOfStudents() {
         return studentService.getNumberOfStudents();
     }
 
     @GetMapping("/average-age")
-    public Integer averageStudentsAge() {
+    public Integer showAverageStudentsAge() {
         return studentService.getAverageStudentAge();
     }
 
     @GetMapping("/five-last")
-    public Collection<Student> fiveLastStudents() {
+    public Collection<Student> showFiveLastStudents() {
         return studentService.getLastFiveStudents();
     }
 
