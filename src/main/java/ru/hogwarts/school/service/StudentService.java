@@ -19,8 +19,8 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Optional<Student> getStudentById(Long studentId) {
-        return studentRepository.findById(studentId);
+    public Student getStudentById(Long studentId) {
+        return studentRepository.findById(studentId).orElseThrow();
     }
 
     public Student updateStudent(Student student) {
@@ -39,5 +39,17 @@ public class StudentService {
 
     public Collection<Student> getStudentsByAgeInterval(int start, int end) {
         return studentRepository.findStudentsByAgeBetween(start, end);
+    }
+
+    public Integer getNumberOfStudents(){
+        return studentRepository.getNumberOfStudents();
+    }
+
+    public Integer getAverageStudentAge(){
+        return studentRepository.getAverageStudentAge();
+    }
+
+    public Collection<Student> getLastFiveStudents(){
+        return studentRepository.getLastFiveStudents();
     }
 }

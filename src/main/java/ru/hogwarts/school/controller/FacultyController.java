@@ -24,7 +24,7 @@ public class FacultyController {
     }
 
     @GetMapping
-    public Optional<Faculty> getFaculty(@RequestParam Long facultyId) {
+    public Faculty getFaculty(@RequestParam Long facultyId) {
         return facultyService.getFacultyById(facultyId);
     }
 
